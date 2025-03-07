@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 Марта!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #ffccff, #ff99cc, #ff6699);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 24px;
+        }
+
+        p {
+            color: #b3005e;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #6a0032;
+            background-color: #9C9CFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #0011B8;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #000A71;
+            color: white;
+            box-shadow: 0 0 25px #0011B8;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 20px;
+            animation: spin 2s linear infinite, fadeOut 4s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.3); }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>С 8 Марта!</h1>
+        <p> </p>
+        <button class="btn" onclick="showFlowers()">Кликай</button>
+    </div>
+
+
+
+
+  
+    <script>
+        function showFlowers() {
+            const emojis = ["✨", "🌸", "🏵", "🤫", "💕", "😺", '🩷', '❤️', '💛', '💚', '💙','🩵', '💜', '🤎', '🩶', "🤍", '❤️‍🔥'];
+            for (let i = 0; i < 50; i++) { 
+                let flower = document.createElement("div");
+                flower.classList.add("emoji");
+                flower.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                document.body.appendChild(flower);
+
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+
+                flower.style.left = `${x}px`;
+                flower.style.top = `${y}px`;
+
+                setTimeout(() => {
+                    flower.remove();
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>
